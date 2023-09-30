@@ -1,0 +1,140 @@
+string nome[MEMORIA];                                                           //nome do jogador
+char linha_jogador[DIMENSAO] = {'1', '2', '3', '4', '5', '6', '7', '8'};        //posição da linha de jogador
+char coluna_jogador[DIMENSAO] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};       //posição da coluna de jogador
+
+Montar tabuleiro de jogador:
+
+cout << endl;
+            cout << "_________________________________________________________________________________"<< endl;
+            cout << nome[memo] << ":"<< endl;
+            cout << endl;
+            cout << endl;
+            cout << "   ";
+            for (int i = 0; i < DIMENSAO; i++)
+            {
+                cout << coluna_jogador[i] << "  ";
+            }
+            
+            cout << endl;
+            
+            for (int l = 0; l < DIMENSAO; l++)
+            {
+                cout << linha_jogador[l] << " ";  
+                for(int c = 0; c < DIMENSAO; c++)
+                {
+                    cout << tabuleiro_jogador[l][c]; 
+                }  
+                cout << endl;
+            }
+
+Mostrar tabuleiro capa
+
+cout << "_________________________________________________________________________________"<< endl;
+            cout << "Computador:"<< endl;
+            cout << endl;
+            cout << endl;
+            cout << "   ";
+            for (int i = 0; i < DIMENSAO; i++)
+            {
+                cout << coluna_capa[i] << "  ";
+            }
+            cout << endl;
+            
+            for (int l = 0; l < DIMENSAO; l++)
+            {
+                cout << linha_capa[l] << " ";  
+                for(int c = 0; c < DIMENSAO; c++)
+                {
+                    if (tabuleiro_capa[l][c] == "")
+                    {
+                        tabuleiro_capa[l][c] = " ~ ";
+                    }
+                    cout << tabuleiro_capa[l][c];
+                }  
+                cout << endl;
+            }
+            cout << endl;
+            cout << endl;
+            cout << endl;
+            
+Sistema de ataques do humano
+
+            cout << "_________________________________________________________________________________"<< endl;
+            cout << " RODADA " << rodada[memo] << endl;
+            cout << "_________________________________________________________________________________"<< endl;
+            cout << "Qual casa deseja atacar?" << endl;
+            cout << "Posicao:" << endl;
+            cin.get();
+            cin >> teste_atk;
+            //cin >> aux_atk;
+            cin.get();
+            cin >> linha_atk;
+            //teste_atk = ((int)aux_atk) - 65;
+            for (int i = 0; i < 1; i++)
+            {
+                if (linha_atk >= 1 && linha_atk <= 8)
+                {
+                    if (teste_atk >= 0 && teste_atk <= 7)
+                    {
+                        if (tabuleiro_computador[linha_atk - 1][teste_atk] == ""||
+                        tabuleiro_capa[linha_atk - 1][teste_atk] == " * " ||
+                        tabuleiro_capa[linha_atk - 1][teste_atk] == " S " ||
+                        tabuleiro_capa[linha_atk - 1][teste_atk] == " H ")
+                        {
+                            tabuleiro_capa[linha_atk-1][teste_atk] = tabuleiro_computador[linha_atk-1][teste_atk];
+                            jogador_1 = true;
+                            pontos[memo]++;
+                            i--;
+                        }
+                        else
+                        {
+                            tabuleiro_capa[linha_atk - 1][teste_atk] = " * ";
+                            jogador_1 = false;
+                        }
+                    }
+                }
+            }
+
+Sistema de sorteio para ataques do computador.
+
+
+
+ if (dificuldade == 2)
+            {
+                ataques_computador = 0;
+                while (sorteio_verdadeiro == false || ataques_computador < 2)
+                {
+                    linha_numerica_computador  = rand()%8;
+                    coluna_numerica_computador = rand()%8;
+                    if (tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " S " || tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " H " )
+                    {
+                        sorteio_verdadeiro = true;
+                        if (sorteio_verdadeiro == true || ataques_computador == 1)
+                        {
+                            tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " @ ";
+                            ataques_computador++;
+                        }
+                        pontos_computador++;
+                    }
+                    else
+                    {
+                        tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " * ";
+                    }
+                    ataques_computador++;
+                }
+            }
+            else
+            {
+                linha_numerica_computador  = rand()%8;
+                coluna_numerica_computador = rand()%8;
+                if ((tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " S " )
+                || (tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] == " H " ))
+                {
+                    tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " @ ";
+                    pontos_computador++;
+                }
+                else
+                {
+                    tabuleiro_jogador[linha_numerica_computador][coluna_numerica_computador] = " * ";
+                }
+            }

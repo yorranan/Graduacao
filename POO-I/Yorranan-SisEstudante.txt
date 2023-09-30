@@ -1,0 +1,454 @@
+@Yorranan Neves de Almeida Costa
+
+[----- Pacote Controller -----]
+
+/--- AlteraEstudante ---/
+
+package controller;
+
+import java.sql.SQLException;
+import application.App;
+import dao.EstudanteDAO;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import model.Estudante;
+import utils.Constraints;
+
+public class AlteraEstudanteController {
+
+    private Estudante estudante;
+
+    /**
+     * Objeto DAO para manipulação dos dados
+     */
+    private EstudanteDAO estudanteDAO;
+
+    @FXML
+    private Button btnCon;
+
+    @FXML
+    private Button btnCan;
+
+    @FXML
+    private TextField tfdNome;
+
+    @FXML
+    private TextField tfdNovoNome;
+
+    @FXML
+    public void initialize() {
+        inicializaNodes();
+    }
+
+    /**
+     * Event handler para button btnConOnAction (Confirmar)
+     */
+    @FXML
+    private void btnConOnAction(ActionEvent event) throws SQLException {
+        if (!(tfdNome.getText().isEmpty())) {
+            Estudante estudante = new Estudante();
+            EstudanteDAO estudanteDAO = new EstudanteDAO();
+            String antigoNome = tfdNome.getText();
+            String novoNome = tfdNovoNome.getText();
+            estudante.setNome(antigoNome);
+            int id = estudanteDAO.procuraUsuarioPorNome(estudante);
+            estudante.setNome(novoNome);
+            estudante.setEstudanteID(id);
+
+            try {
+                estudanteDAO.alterar(estudante, novoNome);
+                Alert alert;
+                alert = new Alert(AlertType.INFORMATION, "Você clicou no botão Confirmar", ButtonType.OK);
+                alert.setTitle("Estudante alterado com sucesso!");
+                alert.setHeaderText("Informação");
+                alert.show();
+                BorderPane border = App.getRoot();
+                border.setCenter(null);
+            } catch (SQLException e1) {
+                Alert alert;
+                alert = new Alert(AlertType.INFORMATION, "Ocorreu um problema", ButtonType.OK);
+                alert.setTitle("Estudante não foi alterado com sucesso!");
+                alert.setHeaderText("Informação");
+                alert.show();
+                e1.printStackTrace();
+                BorderPane border = App.getRoot();
+                border.setCenter(null);
+            }
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setContentText("Um ou mais campos não foram preenchidos!");
+            alert.showAndWait();
+        }
+
+    }
+
+    /**
+     * Event handler para button btnCanOnAction (Cancelar)
+     */
+    @FXML
+    private void btnCanOnAction(ActionEvent event) {
+        Alert alert;
+        alert = new Alert(AlertType.INFORMATION, "Você clicou no botão Cancelar", ButtonType.OK);
+        alert.setTitle("Estudante Alterado com sucesso!");
+        alert.setHeaderText("Informação");
+        alert.show();
+        // Retornar à tela principal após clicar no botão Cancelar
+        BorderPane border = App.getRoot();
+        border.setCenter(null);
+    }
+
+    private void inicializaNodes() {
+        // Aplica restrição de tamanho máximo de 60 caracteres para o textField txfNome
+        Constraints.setTextFieldMaxLength(tfdNome, 60);
+    }
+}
+
+
+/--- ExcluiEstudante ---/
+
+package controller;
+
+import java.sql.SQLException;
+import application.App;
+import dao.EstudanteDAO;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import model.Estudante;
+import utils.Constraints;
+
+public class ExcluiEstudanteController {
+
+    private Estudante estudante;
+
+    /**
+     * Objeto DAO para manipulação dos dados
+     */
+    private EstudanteDAO estudanteDAO;
+
+    @FXML
+    private Button btnCon;
+
+    @FXML
+    private Button btnCan;
+
+    @FXML
+    private TextField tfdNome;
+
+    @FXML
+    public void initialize() {
+        inicializaNodes();
+    }
+
+    /**
+     * Event handler para button btnConOnAction (Confirmar)
+     */
+    @FXML
+    private void btnConOnAction(ActionEvent event) {
+        if (!(tfdNome.getText().isEmpty())) {
+            estudante = new Estudante();
+            estudante.setNome(tfdNome.getText());
+
+            estudanteDAO = new EstudanteDAO();
+            try {
+                estudanteDAO.excluir(estudante);
+                Alert alert;
+                alert = new Alert(AlertType.INFORMATION, "Você clicou no botão Confirmar", ButtonType.OK);
+                alert.setTitle("Estudante excluído com sucesso!");
+                alert.setHeaderText("Informação");
+                alert.show();
+                BorderPane border = App.getRoot();
+                border.setCenter(null);
+            } catch (SQLException e1) {
+                Alert alert;
+                alert = new Alert(AlertType.INFORMATION, "Ocorreu um problema", ButtonType.OK);
+                alert.setTitle("Estudante não foi excluído com sucesso!");
+                alert.setHeaderText("Informação");
+                alert.show();
+                e1.printStackTrace();
+                BorderPane border = App.getRoot();
+                border.setCenter(null);
+            }
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setContentText("Um ou mais campos não foram preenchidos!");
+            alert.showAndWait();
+        }
+
+    }
+
+    /**
+     * Event handler para button btnCanOnAction (Cancelar)
+     */
+    @FXML
+    private void btnCanOnAction(ActionEvent event) {
+        Alert alert;
+        alert = new Alert(AlertType.INFORMATION, "Você clicou no botão Cancelar", ButtonType.OK);
+        alert.setTitle("Estudante não foi excluído com sucesso!");
+        alert.setHeaderText("Informação");
+        alert.show();
+        // Retornar à tela principal após clicar no botão Cancelar
+        BorderPane border = App.getRoot();
+        border.setCenter(null);
+    }
+
+    private void inicializaNodes() {
+        // Aplica restrição de tamanho máximo de 60 caracteres para o textField txfNome
+        Constraints.setTextFieldMaxLength(tfdNome, 60);
+    }
+}
+
+[----- Pacote DAO -----]
+
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import model.Estudante;
+
+/**
+ *
+ * @author
+ */
+public class EstudanteDAO implements IConst {
+    private String sql;
+    private Connection conn;
+    private PreparedStatement stmt;
+
+    private ResultSet result;
+
+    private void open() throws SQLException {
+        conn = Conexao.getConexao(Conexao.stringDeConexao, Conexao.usuario, Conexao.senha);
+    }
+
+    private void close() throws SQLException {
+        conn.close();
+    }
+
+    public void inserir(Estudante estudante) throws SQLException {
+        open();
+        sql = "INSERT INTO estudante (nome) VALUES (?)";
+        stmt = this.conn.prepareStatement(sql);
+        stmt.setString(1, estudante.getNome());
+        stmt.executeUpdate();
+        close();
+    }
+
+    public void excluir(Estudante estudante) throws SQLException {
+        open();
+        sql = "DELETE FROM estudante WHERE nome = ?";
+        stmt = this.conn.prepareStatement(sql);
+        stmt.setString(1, estudante.getNome());
+        stmt.executeUpdate();
+        close();
+    }
+
+    public void alterar(Estudante estudante, String novoNome) throws SQLException {
+        open();
+        sql = "UPDATE estudante SET nome = ? WHERE estudanteid = ?";
+        stmt = this.conn.prepareStatement(sql);
+        stmt.setString(1, novoNome);
+        stmt.setInt(2, estudante.getEstudanteID());
+        stmt.executeUpdate();
+        close();
+    }
+
+
+    public int procuraUsuarioPorNome(Estudante estudante) throws SQLException {
+        int id = 0;
+        open();
+        sql = "SELECT * FROM Estudante WHERE nome ~* ?";
+        stmt = this.conn.prepareStatement(sql);
+        stmt.setString(1, estudante.getNome());
+        stmt.executeQuery();
+        result = stmt.getResultSet();
+        while(result.next()) {
+            id = result.getInt("estudanteID");
+        }
+        close();
+        return id;
+
+    }
+}
+
+/--- Interface IEstudante ---/
+
+package dao;
+
+import java.sql.SQLException;
+import model.Estudante;
+
+public interface IEstudante {
+    public void inserir(Estudante estudante) throws SQLException;
+    public void excluir(Estudante estudante) throws SQLException;
+    public void alterar(Estudante estudante, String novoNome) throws SQLException;
+
+
+}
+
+[----- Pacote resources/application -----]
+
+/--- FXML AlteraEstudante ---/
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AlteraEstudanteController">
+    <top>
+        <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <center>
+                <ImageView fitHeight="140.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@estudante.png" />
+                    </image>
+                </ImageView>
+            </center>
+            <top>
+                <Label text="Alterar Estudante" BorderPane.alignment="CENTER">
+                    <font>
+                        <Font name="Arial Black" size="31.0" />
+                    </font></Label>
+            </top>
+        </BorderPane>
+    </top>
+    <bottom>
+        <HBox alignment="TOP_RIGHT" prefHeight="34.0" prefWidth="570.0">
+            <children>
+                <Button fx:id="btnCon" onAction="#btnConOnAction" text="Confirmar">
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="Arial Black" size="12.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnCan" onAction="#btnCanOnAction" text="Cancelar">
+                    <font>
+                        <Font name="Arial Black" size="12.0" />
+                    </font></Button>
+            </children>
+        </HBox>
+    </bottom>
+    <left>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Antigo Nome">
+                    <font>
+                        <Font name="Arial Black" size="18.0" />
+                    </font></Label>
+                <TextField fx:id="tfdNome" prefHeight="25.0" prefWidth="679.0" />
+                <Label text="Novo Nome">
+                    <font>
+                        <Font name="Arial Black" size="18.0" />
+                    </font></Label>
+                <TextField fx:id="tfdNovoNome" prefHeight="25.0" prefWidth="679.0" />
+            </children>
+        </VBox>
+    </left>
+</BorderPane>
+
+/--- FXML ExcluiEstudante ---/
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ExcluiEstudanteController">
+    <top>
+        <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <center>
+                <ImageView fitHeight="140.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@estudante.png" />
+                    </image>
+                </ImageView>
+            </center>
+            <top>
+                <Label text="Excluir Estudante" BorderPane.alignment="CENTER">
+                    <font>
+                        <Font name="Arial Black" size="31.0" />
+                    </font></Label>
+            </top>
+        </BorderPane>
+    </top>
+    <bottom>
+        <HBox alignment="TOP_RIGHT" prefHeight="34.0" prefWidth="570.0">
+            <children>
+                <Button fx:id="btnCon" onAction="#btnConOnAction" text="Confirmar">
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="Arial Black" size="12.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnCan" onAction="#btnCanOnAction" text="Cancelar">
+                    <font>
+                        <Font name="Arial Black" size="12.0" />
+                    </font></Button>
+            </children>
+        </HBox>
+    </bottom>
+    <left>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Nome">
+                    <font>
+                        <Font name="Arial Black" size="18.0" />
+                    </font></Label>
+                <TextField fx:id="tfdNome" prefHeight="25.0" prefWidth="679.0" />
+            </children>
+        </VBox>
+    </left>
+</BorderPane>
+
+/--- FXML menus ---/
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+
+<MenuBar xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenusController">
+    <menus>
+        <Menu text="Estudante">
+            <items>
+                <MenuItem fx:id="menuEstudanteInclui" onAction="#incluiOnAction" text="Inclui" />
+                <MenuItem fx:id="menuEstudanteAlterar" mnemonicParsing="false" onAction="#alterarOnAction" text="Alterar" />
+                <MenuItem fx:id="menuEstudanteExcluir" mnemonicParsing="false" onAction="#excluirOnAction" text="Excluir" />
+                <MenuItem fx:id="menuEstudanteSair" mnemonicParsing="false" onAction="#sairOnAction" text="Sair" />
+            </items>
+        </Menu>
+        <Menu text="Professor">
+            <items>
+                <MenuItem fx:id="menuTelaVazia" onAction="#telaVaziaOnAction" text="Tela Vazia" />
+                <MenuItem fx:id="menuProfessorSair" mnemonicParsing="false" onAction="#sairOnAction" text="Sair" />
+            </items>
+        </Menu>
+    </menus>
+</MenuBar>

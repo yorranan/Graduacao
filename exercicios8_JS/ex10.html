@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maior Valor</title>
+  <link rel="stylesheet" href="./assets/estilo.css"/>
+</head>
+<body>
+  <h1>Calculadora de Maior Valor</h1>
+  <div class="container">
+    <h2 style="margin-right: 16px;">Digite o tamanho da matriz:</h2>
+    <input class="input" type="number" id="tamanho">
+  </div>
+  <br/>
+  <div class="container">
+    <button id="ativador">Inserir valores</button>
+  </div>
+  <br/>
+  <div class="container">
+    <h2 style="margin-right: 16px;">Digite os números da linha separados por espaço: (Apenas números positivos)</h2>
+    <input class="input" type="text" id="numeros">
+  </div>
+  <br/>
+  <div class="container">
+    <button id="calcular">Procurar valor</button>
+  </div>
+
+  <script>
+    var maior = -1; 
+    var tamanho = 0;
+    var ativado = false;
+    var index = 0;
+    function zerar() {
+
+      tamanho = parseInt(document.getElementById("tamanho").value);
+      document.getElementById("tamanho").value = 0;
+
+    }
+    function calcular() {
+      var numerosInput = document.getElementById("numeros").value;
+      var numerosArray = numerosInput.split(' ').map(parseFloat);
+
+      numerosArray.forEach(element => {
+        if (maior < element) {
+            maior = element;
+        }
+      });
+    }
+
+    document.getElementById("ativador").addEventListener("click", function() {
+      ativado = true;
+      zerar();
+    });
+    document.getElementById("calcular").addEventListener("click", function() {
+      if (ativado && index < tamanho) {
+        calcular();
+        console.log("maior: " + maior);
+        index++;
+      }
+      else {
+        alert("Informe o tamanho da matriz quadrada")
+      }
+      if (index >= tamanho) {
+        alert("O maior valor da matriz é " + maior);
+      }
+    });
+  </script>
+</body>
+</html>

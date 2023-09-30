@@ -1,0 +1,60 @@
+string tabuleiro_computador[DIMENSAO][DIMENSAO] = {""};                         //inicializando tabuleiro do computador
+int linha_numerica_computador = 0;                                              //linha para matriz computador
+int coluna_numerica_computador = 0;                                             //coluna para matriz computador
+
+Sorteio de posicão de submarino do computador:
+variáveis: linha_numerica_computador, coluna_numerica_computador, tabuleiro_computador.
+
+
+srand(time(NULL));
+    
+        //Sorteio de submarino
+        for (int i = 0; i < 4; i++)
+        {
+            linha_numerica_computador  = rand()%8;
+            coluna_numerica_computador = rand()%8;
+            if (tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] == "")
+            {
+                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] = " S ";
+            }
+            else
+            {
+                i--;
+            }
+        }
+
+Sorteio de posição de hidroavião do computador:
+variáveis: linha_numerica_computador, coluna_numerica_computador, tabuleiro_computador.
+
+for (int i = 0; i < 3; i++)
+        {
+            linha_numerica_computador  = rand()%8;
+            coluna_numerica_computador = rand()%8;
+            if (tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] == "" &&
+                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] == "" &&
+                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] == "" &&
+                tabuleiro_computador[linha_numerica_computador+1][coluna_numerica_computador] == "") 
+            {
+                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] = " H ";
+                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] = " H ";
+                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] = " H ";
+                tabuleiro_computador[linha_numerica_computador+1][coluna_numerica_computador] = " H ";
+            }
+            else
+            {
+                if (tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] == "" &&
+                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] == "" &&
+                tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] == "" &&
+                tabuleiro_computador[linha_numerica_computador-1][coluna_numerica_computador] == "") 
+                {
+                    tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador] = " H ";
+                    tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador-1] = " H ";
+                    tabuleiro_computador[linha_numerica_computador][coluna_numerica_computador+1] = " H ";
+                    tabuleiro_computador[linha_numerica_computador-1][coluna_numerica_computador] = " H ";
+                } 
+                else
+                {
+                    i--;
+                }
+            }
+        }

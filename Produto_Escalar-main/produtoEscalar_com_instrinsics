@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <immintrin.h>
+#define TAMANHO 12  // assume-se que o tamanho é multiplo de quatro -- registradores irão armazenar 4 elementos
+
+void mostrarOpcoes() {
+    printf("--------------------------------\n");
+    printf("1 - Produto Escalar Simples\n");
+    printf("2 - Produto Escalar Impar\n");
+    printf("3 - Multiplicacao por Escalar\n");
+    printf("--------------------------------\n");
+}
+
+float produto_escalar(float *a, float *b);
+
+
+int main() {
+    float x[TAMANHO];
+    float y[TAMANHO];
+    short a[TAMANHO];
+    short b[TAMANHO];
+    float produto;
+    short mmx_produto;
+
+    for (int i = 0; i < TAMANHO; i++) {
+        x[i] = i;
+        y[i] = i;
+        a[i] = i;
+        b[i] = i;
+    }
+    produto = produto_escalar(x,y);
+    printf("\nProduto Escalar: %f\n", produto);
+}
+
+float produto_escalar(float *a, float *b) {
+    float array[4];
+    float total;
+    int i;
+
+    __m128 numero1, numero2, numero3, numero4;
+    numero4 = _mm_setzero_ps(); 
+    for (i = 0; i < TAMANHO; i+=4) {
+        numero1 = _mm_loadu_ps(a+i); //loads unaligned array a into num1  num1= a[3]  a[2]  a[1]  a[0]
+        numero2 = _mm_loadu_ps(b+i); //loads unaligned array b into num2  num2= b[3]   b[2]   b[1]  b[0]
+        numero3 = _mm_mul_ps(numero1, numero2); //performs multiplication   num3 = a[3]*b[3]  a[2]*b[2]  a[1]*b[1]  a[0]*b[0]
+        numero3 = _mm_hadd_ps(numero3, numero3); //performs horizontal addition -- num3=  a[3]*b[3]+ a[2]*b[2]  a[1]*b[1]+a[0]*b[0]  a[3]*b[3]+ a[2]*b[2]  a[1]*b[1]+a[0]*b[0]
+
+        numero4 = _mm_add_ps(numero4, numero3); //performs vertical addition
+    }
+    numero4 = _mm_hadd_ps(numero4, numero4);
+    _mm_store_ss(&total, numero4);
+    return total;
+}

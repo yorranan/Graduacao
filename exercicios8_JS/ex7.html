@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatorial</title>
+    <link rel="stylesheet" href="./assets/estilo.css"/>
+</head>
+<body> 
+    <div class="container">
+      <h1>Digite um número inteiro</h1>
+    </div>
+    <div class="container">
+      <input class="input" type="text" id="meu-input" />
+      <button style="margin-left: 5%;" id="enviar">enviar</button>
+    </div>
+    <script>
+        function fat(n) {
+          if (isNaN(n)) {
+            alert("Digite um valor inteiro válido");
+            return 0;
+          }
+          else {
+            n = parseInt(n);
+            if (n <= 1) {
+              return 1;
+            } else {
+              return n * fat(n - 1);
+            }
+          }
+        }
+
+        document.getElementById("enviar").addEventListener("click", function(event) {
+          event.preventDefault(); // Prevent form submission
+          var input = document.getElementById("meu-input").value;
+          var resultado = fat(input);
+          alert("O fatorial de " + input + " é: " + resultado);
+        });
+    </script>
+</body>
+</html>

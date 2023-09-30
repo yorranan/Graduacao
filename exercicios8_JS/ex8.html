@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selecionar botões </title>
+  <link rel="stylesheet" href="./assets/estilo.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>Selecionador incrível de botões &#128515;</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <button style="margin: 10px;" onclick="selecionar_opcao(1)">Opção 1</button>
+      <button style="margin: 10px;" onclick="selecionar_opcao(2)">Opção 2</button>
+      <button style="margin: 10px;" onclick="selecionar_opcao(3)">Opção 3</button>
+    </div>
+  </div>
+    
+  
+
+  <div id="resultado"></div>
+
+  <script>
+    function selecionar_opcao(op) {
+      switch (op) {
+        case 1:
+          alert("Opção 1");
+          // Perform action for Opção 1
+          break;
+        case 2:
+          alert("Opção 2");
+          // Perform action for Opção 2
+          break;
+        case 3:
+          alert("Opção 3");
+          // Perform action for Opção 3
+          break;
+        default:
+          alert("Opção inválida");
+          // Handle invalid Opcao
+          break;
+      }
+    }
+  </script>
+</body>
+</html>

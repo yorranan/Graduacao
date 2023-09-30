@@ -1,0 +1,26 @@
+version: '3'
+
+networks:
+  net:
+    driver: bridge
+
+services:
+  app:
+    container_name: app
+    build: .
+    volumes:
+      - .:/usr/share/nginx/html
+    ports:
+      - 89:80
+    networks:
+      - net
+
+  app2: 
+    container_name: app2
+    build: .
+    volumes:
+      - .:/usr/share/nginx/html
+    ports:
+      - 81:80
+    networks:
+      - net

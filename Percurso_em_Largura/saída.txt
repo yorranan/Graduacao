@@ -1,0 +1,50 @@
+[H[2J[3J[H[2J[3J[H[2J[3J[H[2J[3J[H[2J[3J[H[2J[3J[H[2J[3J[H[2J[3J[H[2J[3J
+1 - Inserir elementos
+2 - Percuso em largura
+3 - Sair
+
+Digite o elemento a ser inserido:
+
+1 - Inserir elementos
+2 - Percuso em largura
+3 - Sair
+
+Digite o elemento a ser inserido:
+
+1 - Inserir elementos
+2 - Percuso em largura
+3 - Sair
+
+Digite o elemento a ser inserido:
+
+1 - Inserir elementos
+2 - Percuso em largura
+3 - Sair
+
+Digite o elemento a ser inserido:
+
+1 - Inserir elementos
+2 - Percuso em largura
+3 - Sair
+
+Digite o elemento a ser inserido:
+
+1 - Inserir elementos
+2 - Percuso em largura
+3 - Sair
+
+Digite o elemento a ser inserido:
+
+1 - Inserir elementos
+2 - Percuso em largura
+3 - Sair
+
+Digite o elemento a ser inserido:
+
+1 - Inserir elementos
+2 - Percuso em largura
+3 - Sair
+25 5 50 14 48 96 22 
+1 - Inserir elementos
+2 - Percuso em largura
+3 - Sair

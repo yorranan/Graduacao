@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identificando letras</title>
+    <link rel="stylesheet" href="./assets/estilo.css"/>
+</head>
+<body>
+    <div class="container">
+        <h1>Digite uma letra</h1>
+    </div>
+    <div style="padding-bottom: 20px;" class="container">
+        <input class="input" type="text" id="input" name="input" maxlength="1" required placeholder="Letra">
+    </div>
+    <div class="container">
+        <button type="button" id="submitButton">Verificar</button>
+    </div>
+    <script>
+        function verificar_letra() {
+            var caractere = document.getElementById("input").value;
+
+            if (caractere === 'a' || caractere === 'A') {
+                alert("A");
+            }
+            else if (caractere === 'b' || caractere === 'B') {
+                alert("B");
+            }
+            else {
+                alert("É outra letra");
+            }
+        }
+
+        document.getElementById("submitButton").addEventListener("click", verificar_letra);
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maior valor</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/estilo.css"/>
+</head>
+<body style="background-color: whitesmoke">
+    <div class="flex justify-content-center">
+        <div class="container">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <h1>Digite dois números para verificar</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container" >
+            <div>
+                <div class="row">
+                    <div style="border: 10px" class="col d-flex justify-content-center">
+                        <input type="text" id="input1" autocomplete="off" name="text" class="input" placeholder="1º Valor">
+                    </div>
+                    <div style="border: 10px" class="col d-flex justify-content-center">
+                        <input type="text" id="input2" name="text" class="input" placeholder="2º valor" >
+                    </div>
+                </div>
+                <br/>
+                <div class="col d-flex justify-content-center">
+                    <button type="button" id="enviar_submissao">Verificar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        function encontrarMaiorValor() {
+            var valor1 = parseFloat(document.getElementById("input1").value);
+            var valor2 = parseFloat(document.getElementById("input2").value);
+
+            if (isNaN(valor1) || isNaN(valor2)) {
+                alert("Por favor, insira valores numéricos válidos.");
+            } else {
+                var maiorValor;
+                if (valor1 > valor2) {
+                    maiorValor = valor1;
+                }
+                else {
+                    maiorValor = valor2;
+                }
+                alert("O maior valor é: " + maiorValor);
+            }
+        }
+
+        document.getElementById("enviar_submissao").addEventListener("click", encontrarMaiorValor);
+    </script>
+</body>
+</html>

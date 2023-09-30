@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de notas</title>
+    <link rel="stylesheet" href="./assets/estilo.css"/>
+</head>
+<body>
+    <div>
+        <div class="container">
+            <h2>Digite a sua nota</h2>
+        </div>
+        <div class="container">
+            <input class="input" type="number" id="input" name="input" placeholder="Nota" width="400px" min="0" max="10" step="0.1">
+        </div>
+        <br/>
+        <div class="container">
+            <br>
+            <button type="button" id="submitButton">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        function calcular_aprovacao() {
+            var valor = document.getElementById("input").value;
+
+            if (valor > 8) {
+                alert("Aprovado com louvor!");
+            }
+            else if (valor >= 6) {
+                alert("Aprovado!");
+            }
+            else {
+                alert("Reprovado.");
+            }
+        }
+
+        document.getElementById("submitButton").addEventListener("click", calcular_aprovacao);
+    </script>
+</body>
+</html>

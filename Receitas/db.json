@@ -1,0 +1,204 @@
+{
+  "posts": [
+    {
+      "id": "0",
+      "nome": "Torta de Limão",
+      "ingredientes": [
+        "200 g de biscoito de maisena margarina",
+        "150 g de margarina",
+        "1 lata de leite condensado",
+        "1 caixa de creme de leite",
+        "suco de 4 limões",
+        "raspas de 2 limões",
+        "3 ou 4 claras de ovo",
+        "3 colheres (sopa) de açúcar",
+        "raspas de 2 limões para decorar"
+      ],
+      "modoPreparo": [
+        "Massa",
+        "Triture o biscoito de maisena em um liquidificador ou processador.",
+        "Junte a margarina e bata mais um pouco.",
+        "Despeje a massa em uma forma de fundo removível (27 cm de diâmetro).",
+        "Com as mãos, espalhe os biscoitos triturados no fundo e nas laterais da forma, cobrindo toda área de maneira uniforme.",
+        "Leve ao forno médio (180° C), preaquecido, por aproximadamente 10 minutos.",
+        "Recheio",
+        "Bata todos os ingredientes no liquidificador (exceto as raspas de limão) até obter um creme liso e firme.",
+        "Recheie a massa já assada e leve à geladeira por 30 minutos.",
+        "Cobertura",
+        "Bata as claras em neve e acrescente o açúcar.",
+        "Misture até obter um ponto de suspiro e leve ao forno até dourar.",
+        "Desenforme a torta (sem retirar o fundo falso), despeje a cobertura e acrescente as raspas de limão."
+      ]
+    },
+    {
+      "id": "1",
+      "nome": "Mousse de Maracujá",
+      "ingredientes": [
+        "2 caixas de gelatina de maracujá",
+        "2 xícaras de água quente",
+        "1/2 xícara de suco de maracujá",
+        "2 xícaras de leite de vaca",
+        "1 lata de leite condensado",
+        "1 lata de creme de leite sem soro"
+      ],
+      "modoPreparo": [
+        "Prepare a gelatina com a água quente.",
+        "Depois é só bater todos os ingredientes no liquidificador e colocar numa travessa para gelar."
+      ]
+    },
+    {
+      "id": "2",
+      "nome": "Bolo de Morango",
+      "ingredientes": [
+        "5 ovos",
+        "2 xícaras (chá) de açúcar",
+        "2 xícaras (chá) de farinha de trigo",
+        "1 xícara (chá) de leite quente",
+        "1 colher (sopa) de fermento em pó",
+        "1/2 litro de leite",
+        "1 lata de leite condensado",
+        "1 lata de creme de leite",
+        "3 gemas",
+        "3 colheres de amido de milho",
+        "2 caixinhas de morango",
+        "2 caixinhas de chantilly",
+        "1 caixinha de morango"
+      ],
+      "modoPreparo": [
+        "Pão-de-ló",
+        "Bata na batedeira as claras em neve, adicione as gemas uma a uma e continue batendo, junte o açúcar e bata mais um pouco.",
+        "Junte a farinha peneirada e o leite bem quente e mexa bem, sem bater, por último coloque o fermento.",
+        "Leve para assar em forma redonda sem buraco no meio, untada e enfarinhada em forno pré-aquecido em temperatura média por no máximo 30 minutos ou quando tiver dourado e bem sequinho.",
+        "Cresce bastante e fica bem fofinho.",
+        "Recheio",
+        "Coloque em uma panela o leite e deixe aquecer, junte as gemas batidas, o leite condensado e o amido de milho e deixe engrossar, mexendo sempre.",
+        "Retire do fogo e coloque o creme de leite.",
+        "Montagem do bolo",
+        "Desenforme o bolo quando estiver morno (fica mais fácil).",
+        "Corte ao meio com uma faca de serrinha.",
+        "Faça um purê com alguns morangos (amasse os morangos com o garfo, coloque um pouco de açúcar e um pouco de água).",
+        "Regue uma metade do bolo com a calda que formou do purê, coloque o recheio e morangos picados e coloque a outra metade do bolo por cima.",
+        "Cobertura",
+        "Bata na batedeira o chantilly até ficar bem fofo (é bem rápido).",
+        "Cubra o bolo e enfeite com metades de morango."
+      ]
+    },
+    {
+      "id": "3",
+      "nome": "Paçoca",
+      "ingredientes": [
+        "500 g de amendoim torrado e moído com pele",
+        "1 pacote de bolacha maizena",
+        "1 lata de leite condensado"
+      ],
+      "modoPreparo": [
+        "Torre o amendoim por aproximadamente 20 minutos.",
+        "Bata no liquidificador até que fique todo triturado.",
+        "Coloque em uma vasilha grande para que possa misturar todos os ingredientes bem.",
+        "Bata a bolacha também no liquidificador, misture ao amendoim.",
+        "Coloque o leite condensado aos poucos, mexendo bem, até que fique uma massa bem dura.",
+        "Espalhe em uma forma média untada com margarina, apertando bem com as mãos.",
+        "Deixe descansar por 20 minutos e corte os quadradinhos."
+      ]
+    },
+    {
+      "id": "4",
+      "nome": "Pudim",
+      "ingredientes": [
+        "1 xícara (chá) de açúcar",
+        "1 lata de leite condensado",
+        "2 latas de leite (medida da lata de leite condensado)",
+        "3 ovos"
+      ],
+      "modoPreparo": [
+        "Calda",
+        "Em uma panela de fundo largo, derreta o açúcar até ficar dourado.",
+        "Junte 1/2 xícara (chá) de água quente e mexa com uma colher.",
+        "Deixe ferver até dissolver os torrões de açúcar e a calda engrossar.",
+        "Forre com a calda uma forma com furo central (19 cm de diâmetro) e reserve.",
+        "Pudim",
+        "Bata todos os ingredientes do pudim no liquidificador e despeje na forma reservada.",
+        "Asse em banho-maria, em forno médio (180º C), por cerca de 1 hora e 30 minutos.",
+        "Depois de frio, leve para gelar por cerca de 6 horas.",
+        "Desenforme e sirva a seguir."
+      ]
+    },
+    {
+      "id": "5",
+      "nome": "Cheesecake",
+      "ingredientes": [
+        "1 pacote (200 g) de bolacha maria triturada no liquidificador",
+        "100 g de manteiga sem sal",
+        "1 lata de leite condensado",
+        "1 lata de creme de leite sem soro",
+        "3 gemas",
+        "200 g de ricota fresca",
+        "1 1/2 caixa de cream cheese (225 g)",
+        "3 colheres (sopa) de amido de milho",
+        "3 colheres (sopa) de açúcar",
+        "Raspas da casca de 1/2 limão",
+        "1 vidro de geléia de amoras (ou sabor de sua preferência)",
+        "1/2 xícara de água",
+        "1 colher (chá) de amido de milho"
+      ],
+      "modoPreparo": [
+        "Amasse a bolacha triturada e a manteiga com as pontas dos dedos, até obter uma farofa consistente.",
+        "Coloque em uma assadeira de aro removível.",
+        "Forre o fundo e laterais com a farofa.",
+        "Leve ao forno pré - aquecido para dourar levemente, por aproximadamente 5 minutos.",
+        "Retire e deixe esfriar.",
+        "Bata no liquidificador todos os ingredientes do recheio até ficar bem homogêneo.",
+        "Despeje sobre a massa pré - assada e fria.",
+        "Leve ao forno até que o creme esteja firme e levemente dourado.",
+        "Após esfriar, leve à geladeira sem desenformar.",
+        "Cobertura",
+        "Leve os ingrediente ao fogo até ferver e ficar brilhante.",
+        "Retire do fogo, deixe esfriar e espalhe sobre a torta gelada.",
+        "Coloque novamente na geladeira por mais 2 horas.",
+        "Retire o aro da forma e sirva gelada."
+      ]
+    },
+    {
+      "id": "6",
+      "nome": "Mont Blanc",
+      "ingredientes": [
+        "2kg de castanhas portuguesas",
+        "1L de leite",
+        "1 fava de baunilha",
+        "500ml de creme de leite",
+        "6 discos de suspiro de 20cm de diâmetro cada",
+        "6 bombons de marrom glacê",
+        "100ml de creme de leite fresco e gelado",
+        "20g de açúcar abaunilhado",
+        "500g de chocolate meio amargo em barra",
+        "3 colheres (sopa) de manteiga de cacau (culinária)",
+        "250ml de creme de leite"
+      ],
+      "modoPreparo": [
+        "Castanhas",
+        "Cozinhe as castanhas com o leite, o creme de leite e a baunilha até que as castanhas absorvam todo o leite.",
+        "Chantilly",
+        "Bata bastante o creme de leite na batedeira até virar chantilly.",
+        "Acrescente o açúcar abaunilhado e bata mais um pouco para misturar.",
+        "Em seguida, acrescente as castanhas e amasse para fazer uma pasta homogênea.",
+        " Mas deixe reservado um pouco do chantilly para rechear os mont blancs.",
+        "Coloque a pasta por cima dos discos de suspiro deixando em forma de montanha.",
+        "Cobertura de chocolate",
+        "Derreta o chocolate em banho-maria com a manteiga de cacau.",
+        "Depois de derretido, misture o creme de leite e mexa até ficar homogêneo.",
+        "Faça um buraco no meio da 'montanha' e recheie com o resto do chantilly até o topo.",
+        " Cubra com a cobertura de chocolate e decore com bombons de marrom glacê no topo."
+      ]
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
