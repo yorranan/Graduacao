@@ -2,8 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <locale.h>
 
-#define N 100*1000
+#define N 10
 
 void swap(int *xp, int *yp)
 {
@@ -12,43 +13,37 @@ void swap(int *xp, int *yp)
     *yp = temp;
 }
 
-void initializeArray(int arr[], int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        arr[i] = rand() % n;
-    }
-}
 
-int main (int argc, char *argv[]) {
-    clock_t start_time = clock();
-	int array[N];
-	initializeArray(array, N);
-    printf("Array Desordenado: \n");
-    for(int i = 0; i < N;i++)
+int main () {
+	setlocale(LC_ALL, "Portuguese");
+
+    for (int rodada = 1; rodada <= 100000; rodada*=10)
 	{
-		printf("%d ",array[i]);
-	}
-	int first;
-	double start, end;
-	for(int i = 0; i < N-1; i++)
-	{
-		first = i % 2; 
-		#pragma omp parallel for default(none), shared(A,first,N)
-		for(int j = first; j < N-1; j += 1 )
+		clock_t start = clock();
+
+		int array[N*rodada];
+		for (int i = 0; i < N; i++)
 		{
-			if( array[j] > array[j+1] )
+			array[i] = rand() % N;
+		}
+
+		#pragma omp parallel for
+		for(int i = 0; i < N-1; i++)
+		{
+			for(int j = 0; j < N-i-1; j++)
 			{
-				swap( &array[j], &array[j+1] );
+				if(array[j] > array[j+1])
+				{
+					#pragma omp critical
+					{
+						swap(&array[j], &array[j+1]);
+					}
+				}
 			}
 		}
+		clock_t finish = clock();
+		double time_spent = (double)(finish - start)/CLOCKS_PER_SEC;
+		printf("Rodada %i N = %i Tempo de execução: %f\n", rodada, rodada*N, time_spent);
 	}
-    printf("\nArray Ordenado: \n");
-	for(int i = 0; i < N;i++)
-	{
-		printf("%d ",array[i]);
-	}
-    clock_t finish = clock();
-	double time_spent = (double)(finish - start_time)/CLOCKS_PER_SEC;
-	printf("\nTime de execucao: %f\n", time_spent);
+    return 0;
 }

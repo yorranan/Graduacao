@@ -1,16 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <locale.h>
 
-#define N 100*1000
-
-void initializeArray(int arr[], int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        arr[i] = rand() % n;
-    }
-}
+#define N 10
 
 void swap(int *xp, int *yp)
 {
@@ -19,60 +12,41 @@ void swap(int *xp, int *yp)
     *yp = temp;
 }
 
-void bubbleSort(int arr[], int n)
-{
-    int i, j;
-    unsigned short int swapped;
-    for (i = 0; i < n - 1; i++) {
-        swapped = 0;
-        for (j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) 
-            {
-                swap(&arr[j], &arr[j + 1]);
-                swapped = 1;
-            }
-        }
-        if (swapped == 0)
-        {
-            break;
-        }
-    }
-}
-
 int main()
 {
+    setlocale(LC_ALL, "Portuguese");
     clock_t start_time = clock();
-    int array[N];
-    initializeArray(array, N);
-    printf("Array Desordenado: \n");
-    for (int i = 0; i < N; i++)
+
+    for (int rodada = 1; rodada <= 100000; rodada *= 10)
     {
-        printf("%d ", array[i]);
-    }
-    int i, j;
-    unsigned short int swapped;
-    for (i = 0; i < N - 1; i++) 
-    {
-        swapped = 0;
-        for (j = 0; j < N - i - 1; j++) {
-            if (array[j] > array[j + 1]) 
+        int array[N];
+        for (int i = 0; i < N; i++)
+        {
+            array[i] = rand() % N;
+        }
+
+        int i, j;
+        unsigned short int swapped;
+        for (i = 0; i < N - 1; i++)
+        {
+            swapped = 0;
+            for (j = 0; j < N - i - 1; j++)
             {
-                swap(&array[j], &array[j + 1]);
-                swapped = 1;
+                if (array[j] > array[j + 1])
+                {
+                    swap(&array[j], &array[j + 1]);
+                    swapped = 1;
+                }
+            }
+            if (!swapped)
+            {
+                i = N;
             }
         }
-        if (swapped == 0)
-        {
-            break;
-        }
+  
+        clock_t finish = clock();
+        double time_spent = (double)(finish - start_time) / CLOCKS_PER_SEC;
+        printf("Rodada %i N = %i Tempo de execução: %f\n", rodada, rodada * N, time_spent);
     }
-    printf("\nArray Ordenado: \n");
-    for (int i = 0; i < N; i++)
-    {
-        printf("%d ", array[i]);
-    }
-    clock_t finish = clock();
-	double time_spent = (double)(finish - start_time)/CLOCKS_PER_SEC;
-	printf("\nTime de execucao: %f\n", time_spent);
     return 0;
 }
