@@ -1,3 +1,4 @@
+// -fopenmp -lpthread
 #include <omp.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,42 +9,46 @@
 
 void swap(int *xp, int *yp)
 {
-    int temp = *xp;
-    *xp = *yp;
-    *yp = temp;
+	int temp = *xp;
+	*xp = *yp;
+	*yp = temp;
 }
 
-
-int main () {
+int main()
+{
+	clock_t start = clock();
 	setlocale(LC_ALL, "Portuguese");
-
-    for (int rodada = 1; rodada <= 100000; rodada*=10)
+	for (int rodada = 1; rodada <= 1000000 - 1; rodada *= 10)
 	{
-		clock_t start = clock();
-
-		int array[N*rodada];
+		int array[N * rodada];
 		for (int i = 0; i < N; i++)
 		{
 			array[i] = rand() % N;
 		}
-
-		#pragma omp parallel for
-		for(int i = 0; i < N-1; i++)
+		#pragma omp parallel
 		{
-			for(int j = 0; j < N-i-1; j++)
+			int nthreads = omp_get_num_threads();
+			int chunck = N / nthreads;
+			for (int i = 0; i < N; i++)
 			{
-				if(array[j] > array[j+1])
+				int first = i % nthreads;
+				#pragma omp parallel for schedule(static, chunck)
+				for (int j = first; j < N - 1; j += nthreads)
 				{
-					#pragma omp critical
+					if (array[j] > array[j + 1])
 					{
-						swap(&array[j], &array[j+1]);
+						#pragma omp critical
+						{
+							swap(&array[j], &array[j + 1]);
+						}
 					}
 				}
 			}
 		}
 		clock_t finish = clock();
-		double time_spent = (double)(finish - start)/CLOCKS_PER_SEC;
-		printf("Rodada %i N = %i Tempo de execução: %f\n", rodada, rodada*N, time_spent);
+		double time_spent = (double)(finish - start) / CLOCKS_PER_SEC;
+		printf("Rodada %i N = %i Tempo de execução: %.8lf\n", rodada, rodada * N, time_spent);
 	}
-    return 0;
+
+	return 0;
 }

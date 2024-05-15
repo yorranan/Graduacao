@@ -17,7 +17,7 @@ int main()
     setlocale(LC_ALL, "Portuguese");
     clock_t start_time = clock();
 
-    for (int rodada = 1; rodada <= 100000; rodada *= 10)
+    for (int rodada = 1; rodada <= 100000; rodada += 1000)
     {
         int array[N];
         for (int i = 0; i < N; i++)
