@@ -7,23 +7,33 @@
 
 #define N 10
 
-void swap(int *xp, int *yp)
+void insertionSort(int vetorr[], int n)
 {
-	int temp = *xp;
-	*xp = *yp;
-	*yp = temp;
+	int i, indice, j;
+	for (i = 1; i < n; i++)
+	{
+		indice = vetorr[i];
+		j = i - 1;
+
+		while (j >= 0 && vetorr[j] > indice)
+		{
+			vetorr[j + 1] = vetorr[j];
+			j = j - 1;
+		}
+		vetorr[j + 1] = indice;
+	}
 }
 
 int main()
 {
 	clock_t start = clock();
 	setlocale(LC_ALL, "Portuguese");
-	for (int rodada = 1; rodada <= 100000 - 1; rodada *= 10)
+	for (int rodada = 1; rodada <= 1000000 - 1; rodada *= 10)
 	{
-		int array[N * rodada];
+		int vetor[N * rodada];
 		for (int i = 0; i < N; i++)
 		{
-			array[i] = rand() % N;
+			vetor[i] = rand() % N;
 		}
 		#pragma omp parallel
 		{
@@ -32,16 +42,10 @@ int main()
 			for (int i = 0; i < N; i++)
 			{
 				int first = i % nthreads;
-				#pragma omp parallel for schedule(static, chunck)
+				#pragma omp for schedule(static, chunck)
 				for (int j = first; j < N - 1; j += nthreads)
 				{
-					if (array[j] > array[j + 1])
-					{
-						#pragma omp critical
-						{
-							swap(&array[j], &array[j + 1]);
-						}
-					}
+					insertionSort(vetor, N);
 				}
 			}
 		}
