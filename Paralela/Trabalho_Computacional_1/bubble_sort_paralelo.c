@@ -7,33 +7,23 @@
 
 #define N 10
 
-void insertionSort(int vetorr[], int n)
+void swap(int *xp, int *yp)
 {
-	int i, indice, j;
-	for (i = 1; i < n; i++)
-	{
-		indice = vetorr[i];
-		j = i - 1;
-
-		while (j >= 0 && vetorr[j] > indice)
-		{
-			vetorr[j + 1] = vetorr[j];
-			j = j - 1;
-		}
-		vetorr[j + 1] = indice;
-	}
+	int temp = *xp;
+	*xp = *yp;
+	*yp = temp;
 }
 
 int main()
 {
 	clock_t start = clock();
 	setlocale(LC_ALL, "Portuguese");
-	for (int rodada = 1; rodada <= 1000000 - 1; rodada *= 10)
+	for (int rodada = 1; rodada <= 100000 - 1; rodada *= 10)
 	{
-		int vetor[N * rodada];
+		int array[N * rodada];
 		for (int i = 0; i < N; i++)
 		{
-			vetor[i] = rand() % N;
+			array[i] = rand() % N;
 		}
 		#pragma omp parallel
 		{
@@ -42,16 +32,22 @@ int main()
 			for (int i = 0; i < N; i++)
 			{
 				int first = i % nthreads;
-				#pragma omp for schedule(static, chunck)
+				#pragma omp parallel for schedule(static, chunck)
 				for (int j = first; j < N - 1; j += nthreads)
 				{
-					insertionSort(vetor, N);
+					if (array[j] > array[j + 1])
+					{
+						#pragma omp critical
+						{
+							swap(&array[j], &array[j + 1]);
+						}
+					}
 				}
 			}
 		}
 		clock_t finish = clock();
 		double time_spent = (double)(finish - start) / CLOCKS_PER_SEC;
-		printf("Rodada %i N = %i Tempo de execução: %.8lf\n", rodada, rodada * N, time_spent);
+		printf("N = %i Tempo de execução: %.8lf\n", rodada * N, time_spent);
 	}
 
 	return 0;

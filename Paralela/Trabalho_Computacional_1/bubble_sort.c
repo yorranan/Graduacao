@@ -46,7 +46,7 @@ int main()
   
         clock_t finish = clock();
         double time_spent = (double)(finish - start_time) / CLOCKS_PER_SEC;
-        printf("Rodada %i N = %i Tempo de execução: %f\n", rodada, rodada * N, time_spent);
+        printf("N = %i Tempo de execução: %f\n", rodada * N, time_spent);
     }
     return 0;
 }
