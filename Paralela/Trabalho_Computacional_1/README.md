@@ -26,6 +26,6 @@ Para compilar os códigos usando o paralelismo do OpenMP execute:
 gcc nome_do_codigo.c -o nome_do_exe -lpthread -fopenmp
 ```
 
-```sh
+```shell
 ./nome
 ```
