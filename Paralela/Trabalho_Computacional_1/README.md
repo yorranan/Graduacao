@@ -3,7 +3,9 @@
 ## Grupo
 
 Enzo Dall`Agnol [@EnzoDall](https://github.com/EnzoDall)
+
 Luiz Gustavo Galeski [@luizgaleski](https://github.com/luizgaleski)
+
 Yorranan Costa [@yorranan](https://github.com/yorranan)
 
 
