@@ -46,26 +46,26 @@ void countingSort(int arr[], int n)
 
 int main()
 {
-    clock_t start = clock();
     setlocale(LC_ALL, "Portuguese");
 
-    for (int rodada = 1; rodada <= 100000-1; rodada *= 10)
+    for (int n = 0; n <= 100000; n += 10000)
     {
-        int *V = (int *)malloc(rodada * N * sizeof(int));
+        clock_t start = clock();
+        int *V = (int *)malloc(n * sizeof(int));
 
         srand(time(NULL));
-        for (int i = 0; i < rodada * N; i++)
+        for (int i = 0; i < n; i++)
         {
             V[i] = rand() % 1000;
         }
 
-        countingSort(V, rodada * N);
+        countingSort(V, n);
 
         free(V);
 
         clock_t finish = clock();
         double time_spent = (double)(finish - start) / CLOCKS_PER_SEC;
-        printf("N = %i Tempo total de execução: %.8lf segundos\n", N * rodada, time_spent);
+        printf("N = %i Tempo total de execução: %.8lf segundos\n", n, time_spent);
     }
 
     return 0;

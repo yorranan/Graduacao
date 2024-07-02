@@ -4,8 +4,6 @@
 #include <time.h>
 #include <locale.h>
 
-#define N 10
-
 void insertionSort(int arr[], int n)
 {
     int i, key, j;
@@ -43,23 +41,24 @@ void parallelInsertionSort(int arr[], int n)
 
 int main()
 {
-    clock_t start = clock();
     setlocale(LC_ALL, "Portuguese");
 
-    for (int rodada = 1; rodada <= 100000-1; rodada *= 10)
+    for (int n = 0; n <= 100000; n += 10000)
     {
-        int vetor[N * rodada];
-        for (int i = 0; i < N * rodada; i++)
+
+        clock_t start = clock();
+        int vetor[n];
+        for (int i = 0; i < n; i++)
         {
-            vetor[i] = rand() % N;
+            vetor[i] = rand() % n;
         }
 
-        // insertionSort(vetor, N * rodada);
-        parallelInsertionSort(vetor, N * rodada);
+        //insertionSort(vetor, n);
+        parallelInsertionSort(vetor, n);
 
         clock_t finish = clock();
         double time_spent = (double)(finish - start) / CLOCKS_PER_SEC;
-        printf("N = %i Tempo de execução: %.8lf\n", rodada * N, time_spent);
+        printf("N = %i Tempo de execução: %.8lf\n", n, time_spent);
     }
 
     return 0;

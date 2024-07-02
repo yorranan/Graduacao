@@ -3,8 +3,6 @@
 #include <time.h>
 #include <locale.h>
 
-#define N 10
-
 void swap(int *xp, int *yp)
 {
     int temp = *xp;
@@ -17,20 +15,20 @@ int main()
     setlocale(LC_ALL, "Portuguese");
     clock_t start_time = clock();
 
-    for (int rodada = 1; rodada <= 100000; rodada += 1000)
+    for (int n = 0; n <= 100000; n += 10000)
     {
-        int array[N];
-        for (int i = 0; i < N; i++)
+        int array[n];
+        for (int i = 0; i < n; i++)
         {
-            array[i] = rand() % N;
+            array[i] = rand() % n;
         }
 
         int i, j;
         unsigned short int swapped;
-        for (i = 0; i < N - 1; i++)
+        for (i = 0; i < n - 1; i++)
         {
             swapped = 0;
-            for (j = 0; j < N - i - 1; j++)
+            for (j = 0; j < n - i - 1; j++)
             {
                 if (array[j] > array[j + 1])
                 {
@@ -40,13 +38,13 @@ int main()
             }
             if (!swapped)
             {
-                i = N;
+                i = n;
             }
         }
   
         clock_t finish = clock();
         double time_spent = (double)(finish - start_time) / CLOCKS_PER_SEC;
-        printf("N = %i Tempo de execução: %f\n", rodada * N, time_spent);
+        printf("N = %i Tempo de execução: %f\n", n, time_spent);
     }
     return 0;
 }

@@ -1,0 +1,5 @@
+N = 10 Tempo de execução: 0.00054100
+N = 100 Tempo de execução: 0.00282700
+N = 1000 Tempo de execução: 0.00303900
+N = 10000 Tempo de execução: 0.04326900
+N = 100000 Tempo de execução: 1.91180400
